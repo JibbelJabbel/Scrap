@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PWA Web Scraper">
+    <title>iPhone Scraper</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #data { margin-top: 20px; }
+        .item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Web Scraper PWA</h1>
+    <button id="fetch-data">Fetch Latest Data</button>
+    <div id="data"></div>
+
+    <script>
+        document.getElementById('fetch-data').addEventListener('click', async function() {
+            const response = await fetch('https://raw.githubusercontent.com/<your-username>/<your-repo>/main/scraped_data.csv');
+            const text = await response.text();
+            const dataContainer = document.getElementById('data');
+            dataContainer.innerHTML = '';
+
+            const rows = text.split('\n');
+            rows.forEach(row => {
+                const cols = row.split(',');
+                if (cols.length === 2) {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+                    itemDiv.innerHTML = `<strong>${cols[0]}</strong>: ${cols[1]}`;
+                    dataContainer.appendChild(itemDiv);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
