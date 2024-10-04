@@ -17,7 +17,7 @@
 
     <script>
         document.getElementById('fetch-data').addEventListener('click', async function() {
-            const response = await fetch('https://raw.githubusercontent.com/your-username/your-repo/main/scraped_data.csv');
+            const response = await fetch('iPhone_all.cvs');
             const text = await response.text();
             const dataContainer = document.getElementById('data');
             dataContainer.innerHTML = '';
