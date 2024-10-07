@@ -1,7 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
-import time
+
+
+# Function to check if a title matches iPhone models 11 and up
+def is_desired_iphone(title):
+    # List of iPhone models we are interested in (11 and up)
+    valid_models = ['iPhone 11', 'iPhone 12', 'iPhone 13', 'iPhone 14', 'iPhone 15', "iPhone 16"]
+
+    # Check if any of the valid models are in the title
+    return any(model in title for model in valid_models)
+
+
 
 def scrape_data(filename, url):
     items = []
@@ -32,13 +42,18 @@ def scrape_data(filename, url):
         # Loop through each listing and extract the required data
         for item in listings:
             title = item.find('h2', class_='h4').text.strip() if item.find('h2', class_='h4') else 'No title'
-            price_tag = item.find('div', class_='absolute bottom-0')
-            price = price_tag.text.strip() if price_tag else 'No price'
-            link_tag = item.find('a', class_='sf-search-ad-link')
-            link = f"{link_tag['href']}" if link_tag else 'No link'
 
-            # Append the scraped data to the items list
-            items.append({'title': title, 'price': price, 'link': link})
+            # Filter out unwanted iPhones (keep only iPhone 11 and higher)
+            if is_desired_iphone(title):
+                price_tag = item.find('div', class_='absolute bottom-0')
+                price = price_tag.text.strip() if price_tag else 'No price'
+                link_tag = item.find('a', class_='sf-search-ad-link')
+                link = f"{link_tag['href']}" if link_tag else 'No link'
+
+                # Append the filtered iPhone listing to the items list
+                items.append({'title': title, 'price': price, 'link': link})
+            
+            
 
         print(f"Scraped page {page}")
 
