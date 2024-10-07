@@ -2,7 +2,7 @@
 async function fetchData() {
     try {
         // Fetch the data from the CSV file
-        const response = await fetch('iPhone_all.csv');
+        const response = await fetch('https://raw.githubusercontent.com/your-username/your-repo/main/scraped_data.csv');
         const text = await response.text();
 
         // Parse the CSV data
@@ -12,10 +12,25 @@ async function fetchData() {
 
         rows.forEach((row, index) => {
             const cols = row.split(',');
-            if (cols.length >= 2 && index > 0) {  // Skipping header row (index > 0)
+            if (cols.length >= 3 && index > 0) {  // Skipping header row (index > 0)
+                const title = cols[0];  // iPhone title
+                const price = cols[1];  // iPhone price
+                const link = cols[2];   // Link to the Finn.no listing
+
+                // Create a div element for each item
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
-                itemDiv.innerHTML = `<strong>${cols[0]}</strong>: ${cols[1]}`;
+
+                // Create a clickable link that wraps the title and price
+                const linkElement = document.createElement('a');
+                linkElement.href = link;         // Link to Finn.no
+                linkElement.target = '_blank';   // Opens link in a new tab
+                linkElement.innerHTML = `<strong>${title}</strong>: ${price}`;  // Display title and price
+
+                // Append the link to the item div
+                itemDiv.appendChild(linkElement);
+                
+                // Append the item div to the data container
                 dataContainer.appendChild(itemDiv);
             }
         });
@@ -45,5 +60,4 @@ window.onload = function() {
 
     // Add the event listener for the fetch button
     document.getElementById('fetch-data').addEventListener('click', fetchData);
-
 };
