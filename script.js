@@ -2,7 +2,7 @@
 async function fetchData() {
     try {
         // Fetch the data from the CSV file
-        const response = await fetch('https://raw.githubusercontent.com/your-username/your-repo/main/scraped_data.csv');
+        const response = await fetch('iPhone_all.csv');
         const text = await response.text();
 
         // Parse the CSV data
