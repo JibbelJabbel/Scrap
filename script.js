@@ -45,4 +45,5 @@ window.onload = function() {
 
     // Add the event listener for the fetch button
     document.getElementById('fetch-data').addEventListener('click', fetchData);
+    // Nice as bro
 };
