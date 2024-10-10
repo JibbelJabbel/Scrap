@@ -24,7 +24,7 @@ async function loadIphoneListings() {
         // Create a dictionary of model -> average and median prices
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
-            const [model, avgPrice, medPrice] = row.split(',');
+            const [model, cat, stor, avgPrice, medPrice] = row.split(',');
             priceMap[model.toLowerCase()] = {
                 average: avgPrice,
                 median: medPrice
