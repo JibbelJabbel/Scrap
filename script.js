@@ -21,11 +21,12 @@ async function loadIphoneListings() {
         const listingsRows = listingsData.split('\n');
         const statsRows = statsData.split('\n');
 
-        // Create a dictionary of model -> average and median prices
+        // Create a dictionary of model + storage -> average and median prices
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
-            const [model, cat, stor, avgPrice, medPrice] = row.split(',');
-            priceMap[model.toLowerCase()] = {
+            const [model, category, storage, avgPrice, medPrice] = row.split(',');
+            const key = `${model.toLowerCase()}_${storage.trim().toLowerCase()}`; // Create a key with model and storage
+            priceMap[key] = {
                 average: avgPrice,
                 median: medPrice
             };
@@ -55,25 +56,27 @@ async function loadIphoneListings() {
                     tr.appendChild(td);
                 });
 
-                // Extract the model name from the listing title (handle common variations in model names)
+                // Extract the model name and storage size from the listing
                 const title = columns[0].toLowerCase();
+                const storage = columns[2].toLowerCase(); // Assuming storage size is in column 2
                 let matchedModel = null;
-                
+
                 // Try to match the model in the listing with the ones in the statistics CSV
-                Object.keys(priceMap).forEach(model => {
-                    if (title.includes(model)) {
-                        matchedModel = model;
+                Object.keys(priceMap).forEach(key => {
+                    if (title.includes(key.split('_')[0])) {
+                        matchedModel = key.split('_')[0];
                     }
                 });
 
                 // Add the average and median prices to the table, if a match is found
-                if (matchedModel) {
+                const key = `${matchedModel}_${storage}`;
+                if (priceMap[key]) {
                     const averagePriceTd = document.createElement('td');
-                    averagePriceTd.textContent = `${priceMap[matchedModel].average} kr`;
+                    averagePriceTd.textContent = `${priceMap[key].average} kr`;
                     tr.appendChild(averagePriceTd);
 
                     const minPriceTd = document.createElement('td');
-                    minPriceTd.textContent = `${priceMap[matchedModel].median} kr`;
+                    minPriceTd.textContent = `${priceMap[key].median} kr`;
                     tr.appendChild(minPriceTd);
                 } else {
                     // If no match is found, leave the columns empty or put "N/A"
