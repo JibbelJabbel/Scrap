@@ -64,10 +64,17 @@ async function loadIphoneListings() {
                 });
 
                 // Extract the model name and storage size from the listing
-                const title = columns[0].toLowerCase();
-                const storage = columns[2] ? columns[2].toLowerCase() : "unknown"; // Assuming storage size is in column 2, or set to unknown if missing
+                let title = columns[0].toLowerCase();
+                let storage = columns[2] ? columns[2].toLowerCase() : "unknown"; // Assuming storage size is in column 2, or set to unknown if missing
 
-                console.log("Listing title:", title, "Storage:", storage);  // Debugging line to see title and storage
+                // Clean up title by removing extra words like "with storage", "+ gold", etc.
+                title = title.replace(/[\+\-\,\.]/g, ''); // Remove symbols
+                title = title.replace(/[^a-z0-9 ]/g, '').trim(); // Remove special characters and trim spaces
+
+                // Normalize storage size (e.g., convert "128 gb" to "128GB")
+                storage = storage.replace(/\s+/g, '').replace('gb', 'GB'); // Remove spaces and normalize GB
+
+                console.log("Cleaned title:", title, "Storage:", storage);  // Debugging line to see cleaned title and storage
 
                 let matchedKey = null;
 
