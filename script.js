@@ -40,5 +40,6 @@ async function loadIphoneListings() {
             }
         }
 
-// Ensure the DOM is loaded before running the script
-window.onload = loadIphoneListings;
+window.onload = function() {
+            loadIphoneListings();
+        };
