@@ -25,16 +25,18 @@ async function loadIphoneListings() {
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
             const columns = row.split(',');
-            if (columns.length >= 5) {  // Ensure there are enough columns
+            if (columns.length >= 5) {
                 const [model, category, storage, avgPrice, medPrice] = columns;
 
-                if (model && category && storage) {
-                    const key = `${model.trim().toLowerCase()}_${category.trim().toLowerCase()}_${storage.trim().toLowerCase()}`;
-                    priceMap[key] = {
-                        average: avgPrice,
-                        median: medPrice
-                    };
-                }
+                // Normalize storage and model values
+                const normalizedStorage = normalizeStorage(storage.trim().toLowerCase());
+                const normalizedModel = model.trim().toLowerCase();
+                const key = `${normalizedModel}_${category.trim().toLowerCase()}_${normalizedStorage}`;
+
+                priceMap[key] = {
+                    average: avgPrice,
+                    median: medPrice
+                };
             }
         });
 
@@ -67,7 +69,7 @@ async function loadIphoneListings() {
                 // Extract the model, category, and storage size from the listing
                 const model = columns[0] ? columns[0].trim().toLowerCase() : null;  // Assuming model is in column 0
                 const category = columns[3] ? columns[3].trim().toLowerCase() : null;  // Assuming category is in column 3
-                const storage = columns[2] ? columns[2].trim().toLowerCase() : "unknown";  // Assuming storage is in column 2
+                const storage = columns[2] ? normalizeStorage(columns[2].trim().toLowerCase()) : "unknown";  // Normalize storage
 
                 // Only proceed if model, category, and storage are defined
                 if (model && category && storage) {
@@ -101,6 +103,12 @@ async function loadIphoneListings() {
     } catch (error) {
         console.error(error);
     }
+}
+
+// Function to normalize storage values (e.g., '64 gb' -> '64GB')
+function normalizeStorage(storage) {
+    // Remove spaces and standardize 'gb' to 'GB'
+    return storage.replace(/\s+/g, '').replace('gb', 'GB').replace('gig', 'GB');
 }
 
 // Ensure the DOM is fully loaded before running the script
