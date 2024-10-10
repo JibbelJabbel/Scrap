@@ -25,11 +25,15 @@ async function loadIphoneListings() {
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
             const [model, category, storage, avgPrice, medPrice] = row.split(',');
-            const key = `${model.toLowerCase()}_${storage.trim().toLowerCase()}`; // Create a key with model and storage
-            priceMap[key] = {
-                average: avgPrice,
-                median: medPrice
-            };
+
+            // Ensure model and storage are defined before trimming
+            if (model && storage) {
+                const key = `${model.toLowerCase().trim()}_${storage.toLowerCase().trim()}`; // Create a key with model and storage
+                priceMap[key] = {
+                    average: avgPrice,
+                    median: medPrice
+                };
+            }
         });
 
         // Parse the singular listings and display them with average and median prices
