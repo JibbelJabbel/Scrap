@@ -36,7 +36,7 @@ async function loadIphoneListings() {
             }
         });
 
-        // Log price map for debugging
+        // Log the price map to debug
         console.log("Price Map:", priceMap);
 
         // Parse the singular listings and display them with average and median prices
@@ -67,30 +67,31 @@ async function loadIphoneListings() {
                 const title = columns[0].toLowerCase();
                 const storage = columns[2] ? columns[2].toLowerCase() : "unknown"; // Assuming storage size is in column 2, or set to unknown if missing
 
-                let matchedModel = null;
+                console.log("Listing title:", title, "Storage:", storage);  // Debugging line to see title and storage
+
+                let matchedKey = null;
 
                 // Try to match the model in the listing with the ones in the statistics CSV
                 Object.keys(priceMap).forEach(key => {
-                    if (title.includes(key.split('_')[0])) {
-                        matchedModel = key.split('_')[0];
+                    const [modelPart, storagePart] = key.split('_');
+                    if (title.includes(modelPart) && storage.includes(storagePart)) {
+                        matchedKey = key;
                     }
                 });
 
-                // Add the average and median prices to the table, if a match is found
-                const key = `${matchedModel}_${storage.trim()}`;
-                console.log(`Matching key: ${key}`);  // Debugging line to check the constructed key
+                console.log("Matched key:", matchedKey);  // Debugging line to see matched keys
 
-                if (priceMap[key]) {
+                // Add the average and median prices to the table, if a match is found
+                if (matchedKey && priceMap[matchedKey]) {
                     const averagePriceTd = document.createElement('td');
-                    averagePriceTd.textContent = `${priceMap[key].average} kr`;
+                    averagePriceTd.textContent = `${priceMap[matchedKey].average} kr`;
                     tr.appendChild(averagePriceTd);
 
                     const minPriceTd = document.createElement('td');
-                    minPriceTd.textContent = `${priceMap[key].median} kr`;
+                    minPriceTd.textContent = `${priceMap[matchedKey].median} kr`;
                     tr.appendChild(minPriceTd);
                 } else {
-                    // If no match is found, leave the columns empty or put "N/A"
-                    console.log(`No match found for ${key}`);  // Debugging line to see where the matching fails
+                    console.log(`No match found for title: ${title} with storage: ${storage}`);  // Debugging line to check which listings are failing to match
                     const averagePriceTd = document.createElement('td');
                     averagePriceTd.textContent = 'N/A';
                     tr.appendChild(averagePriceTd);
