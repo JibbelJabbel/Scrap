@@ -34,7 +34,8 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add iPhone_all.csv
+        git add statistics_file.csv
+        git add singular_phones_file.csv
         git commit -m "Update scraped data" || echo "No changes to commit"
         git push origin HEAD
       env:
