@@ -21,23 +21,20 @@ async function loadIphoneListings() {
         const listingsRows = listingsData.split('\n');
         const statsRows = statsData.split('\n');
 
-        // Create a dictionary of model + storage -> average and median prices
+        // Create a dictionary of {model + category + storage} -> {average, median}
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
             const [model, category, storage, avgPrice, medPrice] = row.split(',');
 
-            // Ensure model and storage are defined before trimming
-            if (model && storage) {
-                const key = `${model.toLowerCase().trim()}_${storage.toLowerCase().trim()}`; // Create a key with model and storage
-                priceMap[key] = {
-                    average: avgPrice,
-                    median: medPrice
-                };
-            }
+            // Create a key from model + category + storage
+            const key = `${model.trim().toLowerCase()}_${category.trim().toLowerCase()}_${storage.trim().toLowerCase()}`;
+            priceMap[key] = {
+                average: avgPrice,
+                median: medPrice
+            };
         });
 
-        // Log the price map to debug
-        console.log("Price Map:", priceMap);
+        console.log("Price Map:", priceMap); // For debugging
 
         // Parse the singular listings and display them with average and median prices
         const listingsHeaders = listingsRows[0].split(',');
@@ -63,42 +60,26 @@ async function loadIphoneListings() {
                     tr.appendChild(td);
                 });
 
-                // Extract the model name and storage size from the listing
-                let title = columns[0].toLowerCase();
-                let storage = columns[2] ? columns[2].toLowerCase() : "unknown"; // Assuming storage size is in column 2, or set to unknown if missing
+                // Extract the model, category, and storage size from the listing
+                const model = columns[0].trim().toLowerCase();  // Assuming model is in column 0
+                const category = columns[3].trim().toLowerCase();  // Assuming category is in column 3
+                const storage = columns[2] ? columns[2].trim().toLowerCase() : "unknown";  // Assuming storage is in column 2
 
-                // Clean up title by removing extra words like "with storage", "+ gold", etc.
-                title = title.replace(/[\+\-\,\.]/g, ''); // Remove symbols
-                title = title.replace(/[^a-z0-9 ]/g, '').trim(); // Remove special characters and trim spaces
+                // Create a key using model + category + storage
+                const key = `${model}_${category}_${storage}`;
+                console.log("Constructed Key:", key); // Debugging
 
-                // Normalize storage size (e.g., convert "128 gb" to "128GB")
-                storage = storage.replace(/\s+/g, '').replace('gb', 'GB'); // Remove spaces and normalize GB
-
-                console.log("Cleaned title:", title, "Storage:", storage);  // Debugging line to see cleaned title and storage
-
-                let matchedKey = null;
-
-                // Try to match the model in the listing with the ones in the statistics CSV
-                Object.keys(priceMap).forEach(key => {
-                    const [modelPart, storagePart] = key.split('_');
-                    if (title.includes(modelPart) && storage.includes(storagePart)) {
-                        matchedKey = key;
-                    }
-                });
-
-                console.log("Matched key:", matchedKey);  // Debugging line to see matched keys
-
-                // Add the average and median prices to the table, if a match is found
-                if (matchedKey && priceMap[matchedKey]) {
+                // Check if the key exists in priceMap
+                if (priceMap[key]) {
                     const averagePriceTd = document.createElement('td');
-                    averagePriceTd.textContent = `${priceMap[matchedKey].average} kr`;
+                    averagePriceTd.textContent = `${priceMap[key].average} kr`;
                     tr.appendChild(averagePriceTd);
 
                     const minPriceTd = document.createElement('td');
-                    minPriceTd.textContent = `${priceMap[matchedKey].median} kr`;
+                    minPriceTd.textContent = `${priceMap[key].median} kr`;
                     tr.appendChild(minPriceTd);
                 } else {
-                    console.log(`No match found for title: ${title} with storage: ${storage}`);  // Debugging line to check which listings are failing to match
+                    console.log(`No match found for key: ${key}`);  // Debugging line to check which listings are failing to match
                     const averagePriceTd = document.createElement('td');
                     averagePriceTd.textContent = 'N/A';
                     tr.appendChild(averagePriceTd);
