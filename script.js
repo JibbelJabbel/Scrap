@@ -1,63 +1,47 @@
-// Function to fetch and display the iPhone data
-async function fetchData() {
-    try {
-        // Fetch the data from the CSV file
-        const response = await fetch('iPhone_all.csv');
-        const text = await response.text();
+        // Function to load and display iPhone data from CSV
+        async function loadIphoneListings() {
+            const response = await fetch('singular_iphones.csv'); // Path to your CSV file
+            const data = await response.text();
 
-        // Parse the CSV data
-        const rows = text.split('\n');
-        const dataContainer = document.getElementById('data');
-        dataContainer.innerHTML = '';
+            const tableBody = document.querySelector("#iphone-listings tbody");
 
-        rows.forEach((row, index) => {
-            const cols = row.split(',');
-            if (cols.length >= 3 && index > 0) {  // Skipping header row (index > 0)
-                const title = cols[0];  // iPhone title
-                const price = cols[1];  // iPhone price
-                const link = cols[2];   // Link to the Finn.no listing
+            // Split the CSV data into rows
+            const rows = data.split('\n');
 
-                // Create a div element for each item
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
+            // Parse the CSV headers
+            const headers = rows[0].split(',');
 
-                // Create a clickable link that wraps the title and price
-                const linkElement = document.createElement('a');
-                linkElement.href = link;         // Link to Finn.no
-                linkElement.target = '_blank';   // Opens link in a new tab
-                linkElement.innerHTML = `<strong>${title}</strong>: ${price}`;  // Display title and price
+            // Loop through each row of the CSV (skip the first row which is headers)
+            for (let i = 1; i < rows.length; i++) {
+                const columns = rows[i].split(',');
 
-                // Append the link to the item div
-                itemDiv.appendChild(linkElement);
-                
-                // Append the item div to the data container
-                dataContainer.appendChild(itemDiv);
+                // Ensure the row has the expected number of columns
+                if (columns.length === headers.length) {
+                    // Create a new table row
+                    const tr = document.createElement('tr');
+
+                    // Create cells for each column (title, price, link, category, storage)
+                    columns.forEach((column, index) => {
+                        const td = document.createElement('td');
+
+                        // If the column is a link, create an anchor tag
+                        if (headers[index] === 'link') {
+                            const a = document.createElement('a');
+                            a.href = column;
+                            a.textContent = "View Listing";
+                            a.target = "_blank";
+                            td.appendChild(a);
+                        } else {
+                            td.textContent = column;
+                        }
+                        tr.appendChild(td);
+                    });
+
+                    // Append the new row to the table body
+                    tableBody.appendChild(tr);
+                }
             }
-        });
+        }
 
-        // Set the last updated time
-        const lastUpdated = new Date().toLocaleString();
-        document.getElementById('last-updated').innerText = lastUpdated;
-
-        // Save the last updated time to localStorage
-        localStorage.setItem('lastUpdated', lastUpdated);
-
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
-    }
-}
-
-// Automatically load the iPhone list on page load
-window.onload = function() {
-    // Check if there's a last updated time in localStorage
-    const lastUpdated = localStorage.getItem('lastUpdated');
-    if (lastUpdated) {
-        document.getElementById('last-updated').innerText = lastUpdated;
-    }
-
-    // Fetch the data when the page loads
-    fetchData();
-
-    // Add the event listener for the fetch button
-    document.getElementById('fetch-data').addEventListener('click', fetchData);
-};
+        // Load iPhone listings when the page is loaded
+        window.onload = loadIphoneListings;
