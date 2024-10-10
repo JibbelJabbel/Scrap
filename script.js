@@ -42,4 +42,4 @@ async function loadIphoneListings() {
 
 window.onload = function() {
             loadIphoneListings();
-        };
+};
