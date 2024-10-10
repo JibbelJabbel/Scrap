@@ -1,6 +1,6 @@
 Model,Category,Storage,Average Price (kr),Median Price (kr)
 iPhone 11,Regular,64GB,2370.53,2449.50
-iPhone 11,Regular,Unknown,2463.33,2500.00
+iPhone 11,Regular,Unknown,2472.66,2500.00
 iPhone 11,Regular,65GB,1950.00,1950.00
 iPhone 11,Regular,128GB,2490.67,2500.00
 iPhone 11,Regular,256GB,3142.11,2700.00
@@ -14,7 +14,7 @@ iPhone 11,Pro Max,Unknown,3324.45,3345.00
 iPhone 11,Pro Max,256GB,3624.75,3649.50
 iPhone 11,Pro Max,512GB,4250.00,4250.00
 iPhone 11,Pro Max,64GB,4209.89,3800.00
-iPhone 12,Regular,Unknown,3613.87,3500.00
+iPhone 12,Regular,Unknown,3610.08,3500.00
 iPhone 12,Regular,128GB,3631.15,3500.00
 iPhone 12,Regular,256GB,4266.74,4000.00
 iPhone 12,Regular,64GB,3001.26,3000.00
@@ -29,33 +29,33 @@ iPhone 12,Pro Max,128GB,4979.96,4700.00
 iPhone 12,Pro Max,256GB,5083.33,5000.00
 iPhone 12,Pro Max,125GB,4300.00,4300.00
 iPhone 12,Pro Max,512GB,9500.00,9500.00
-iPhone 13,Regular,Unknown,5068.32,5000.00
+iPhone 13,Regular,Unknown,5081.77,5000.00
 iPhone 13,Regular,128GB,4728.85,4500.00
 iPhone 13,Regular,256GB,5487.45,5000.00
 iPhone 13,Regular,512GB,7833.00,7500.00
 iPhone 13,Pro,256GB,5732.57,5800.00
 iPhone 13,Pro,Unknown,5649.92,5500.00
 iPhone 13,Pro,128GB,5328.62,5200.00
-iPhone 13,Pro,512GB,6034.55,5500.00
 iPhone 13,Pro,126GB,6500.00,6500.00
+iPhone 13,Pro,512GB,6838.00,6995.00
 iPhone 13,Pro Max,256GB,6672.57,6500.00
-iPhone 13,Pro Max,128GB,6047.93,6000.00
+iPhone 13,Pro Max,128GB,6037.07,6000.00
 iPhone 13,Pro Max,Unknown,6663.63,6500.00
 iPhone 13,Pro Max,512GB,6510.00,6500.00
 iPhone 13,Pro Max,126GB,6500.00,6500.00
 iPhone 13,Pro Max,1000GB,9000.00,9000.00
-iPhone 14,Regular,Unknown,7336.92,7200.00
+iPhone 14,Regular,Unknown,7278.18,7000.00
 iPhone 14,Regular,256GB,7764.40,7500.00
 iPhone 14,Regular,128GB,7050.95,7000.00
 iPhone 14,Regular,512GB,11320.00,10500.00
-iPhone 14,Pro,Unknown,7875.47,7950.00
+iPhone 14,Pro,Unknown,7829.61,7900.00
 iPhone 14,Pro,256GB,7546.40,7495.00
 iPhone 14,Pro,128GB,7372.47,7000.00
 iPhone 14,Pro,125GB,11000.00,11000.00
 iPhone 14,Pro,512GB,8225.00,8225.00
 iPhone 14,Pro Max,128GB,7702.58,7250.00
 iPhone 14,Pro Max,256GB,8708.42,8500.00
-iPhone 14,Pro Max,Unknown,9391.19,9000.00
+iPhone 14,Pro Max,Unknown,9370.93,8995.00
 iPhone 14,Pro Max,512GB,9900.00,9500.00
 iPhone 14,Pro Max,126GB,7500.00,7500.00
 iPhone 15,Regular,Unknown,10601.28,10500.00
@@ -64,8 +64,8 @@ iPhone 15,Regular,265GB,16800.00,16800.00
 iPhone 15,Regular,512GB,12999.80,13000.00
 iPhone 15,Regular,128GB,9741.33,9500.00
 iPhone 15,Regular,126GB,9000.00,9000.00
-iPhone 15,Pro,Unknown,9210.00,10000.00
-iPhone 15,Pro,512GB,11562.50,11500.00
+iPhone 15,Pro,Unknown,9174.09,10000.00
+iPhone 15,Pro,512GB,11583.33,11500.00
 iPhone 15,Pro,256GB,11359.90,10750.00
 iPhone 15,Pro,128GB,10625.86,10250.00
 iPhone 15,Pro Max,Unknown,13842.19,13500.00
@@ -79,6 +79,6 @@ iPhone 16,Regular,128GB,11312.50,11500.00
 iPhone 16,Pro,Unknown,13398.33,14950.00
 iPhone 16,Pro,256GB,15049.50,15049.50
 iPhone 16,Pro,128GB,14150.00,14150.00
-iPhone 16,Pro Max,256GB,17525.71,17000.00
+iPhone 16,Pro Max,256GB,17297.78,17000.00
 iPhone 16,Pro Max,Unknown,19250.00,19250.00
 iPhone 16,Pro Max,512GB,18500.00,18500.00
