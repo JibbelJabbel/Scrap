@@ -35,10 +35,10 @@ async function loadIphoneListings() {
                         tableBody.appendChild(tr);
                     }
                 }
-            } catch (error) {
+        } catch (error) {
                 console.error(error);
-            }
         }
+ }
 
 window.onload = function() {
             loadIphoneListings();
