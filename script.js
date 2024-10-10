@@ -24,14 +24,18 @@ async function loadIphoneListings() {
         // Create a dictionary of {model + category + storage} -> {average, median}
         const priceMap = {};
         statsRows.slice(1).forEach(row => {
-            const [model, category, storage, avgPrice, medPrice] = row.split(',');
+            const columns = row.split(',');
+            if (columns.length >= 5) {  // Ensure there are enough columns
+                const [model, category, storage, avgPrice, medPrice] = columns;
 
-            // Create a key from model + category + storage
-            const key = `${model.trim().toLowerCase()}_${category.trim().toLowerCase()}_${storage.trim().toLowerCase()}`;
-            priceMap[key] = {
-                average: avgPrice,
-                median: medPrice
-            };
+                if (model && category && storage) {
+                    const key = `${model.trim().toLowerCase()}_${category.trim().toLowerCase()}_${storage.trim().toLowerCase()}`;
+                    priceMap[key] = {
+                        average: avgPrice,
+                        median: medPrice
+                    };
+                }
+            }
         });
 
         console.log("Price Map:", priceMap); // For debugging
@@ -61,35 +65,37 @@ async function loadIphoneListings() {
                 });
 
                 // Extract the model, category, and storage size from the listing
-                const model = columns[0].trim().toLowerCase();  // Assuming model is in column 0
-                const category = columns[3].trim().toLowerCase();  // Assuming category is in column 3
+                const model = columns[0] ? columns[0].trim().toLowerCase() : null;  // Assuming model is in column 0
+                const category = columns[3] ? columns[3].trim().toLowerCase() : null;  // Assuming category is in column 3
                 const storage = columns[2] ? columns[2].trim().toLowerCase() : "unknown";  // Assuming storage is in column 2
 
-                // Create a key using model + category + storage
-                const key = `${model}_${category}_${storage}`;
-                console.log("Constructed Key:", key); // Debugging
+                // Only proceed if model, category, and storage are defined
+                if (model && category && storage) {
+                    const key = `${model}_${category}_${storage}`;
+                    console.log("Constructed Key:", key); // Debugging
 
-                // Check if the key exists in priceMap
-                if (priceMap[key]) {
-                    const averagePriceTd = document.createElement('td');
-                    averagePriceTd.textContent = `${priceMap[key].average} kr`;
-                    tr.appendChild(averagePriceTd);
+                    // Check if the key exists in priceMap
+                    if (priceMap[key]) {
+                        const averagePriceTd = document.createElement('td');
+                        averagePriceTd.textContent = `${priceMap[key].average} kr`;
+                        tr.appendChild(averagePriceTd);
 
-                    const minPriceTd = document.createElement('td');
-                    minPriceTd.textContent = `${priceMap[key].median} kr`;
-                    tr.appendChild(minPriceTd);
-                } else {
-                    console.log(`No match found for key: ${key}`);  // Debugging line to check which listings are failing to match
-                    const averagePriceTd = document.createElement('td');
-                    averagePriceTd.textContent = 'N/A';
-                    tr.appendChild(averagePriceTd);
+                        const minPriceTd = document.createElement('td');
+                        minPriceTd.textContent = `${priceMap[key].median} kr`;
+                        tr.appendChild(minPriceTd);
+                    } else {
+                        console.log(`No match found for key: ${key}`);  // Debugging line to check which listings are failing to match
+                        const averagePriceTd = document.createElement('td');
+                        averagePriceTd.textContent = 'N/A';
+                        tr.appendChild(averagePriceTd);
 
-                    const minPriceTd = document.createElement('td');
-                    minPriceTd.textContent = 'N/A';
-                    tr.appendChild(minPriceTd);
+                        const minPriceTd = document.createElement('td');
+                        minPriceTd.textContent = 'N/A';
+                        tr.appendChild(minPriceTd);
+                    }
+
+                    tableBody.appendChild(tr);
                 }
-
-                tableBody.appendChild(tr);
             }
         }
     } catch (error) {
