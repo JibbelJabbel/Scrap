@@ -36,6 +36,9 @@ async function loadIphoneListings() {
             }
         });
 
+        // Log price map for debugging
+        console.log("Price Map:", priceMap);
+
         // Parse the singular listings and display them with average and median prices
         const listingsHeaders = listingsRows[0].split(',');
 
@@ -62,7 +65,8 @@ async function loadIphoneListings() {
 
                 // Extract the model name and storage size from the listing
                 const title = columns[0].toLowerCase();
-                const storage = columns[2].toLowerCase(); // Assuming storage size is in column 2
+                const storage = columns[2] ? columns[2].toLowerCase() : "unknown"; // Assuming storage size is in column 2, or set to unknown if missing
+
                 let matchedModel = null;
 
                 // Try to match the model in the listing with the ones in the statistics CSV
@@ -73,7 +77,9 @@ async function loadIphoneListings() {
                 });
 
                 // Add the average and median prices to the table, if a match is found
-                const key = `${matchedModel}_${storage}`;
+                const key = `${matchedModel}_${storage.trim()}`;
+                console.log(`Matching key: ${key}`);  // Debugging line to check the constructed key
+
                 if (priceMap[key]) {
                     const averagePriceTd = document.createElement('td');
                     averagePriceTd.textContent = `${priceMap[key].average} kr`;
@@ -84,6 +90,7 @@ async function loadIphoneListings() {
                     tr.appendChild(minPriceTd);
                 } else {
                     // If no match is found, leave the columns empty or put "N/A"
+                    console.log(`No match found for ${key}`);  // Debugging line to see where the matching fails
                     const averagePriceTd = document.createElement('td');
                     averagePriceTd.textContent = 'N/A';
                     tr.appendChild(averagePriceTd);
