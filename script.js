@@ -47,15 +47,15 @@ async function loadIphoneListings() {
                     priceClass = 'red';
                 }
 
-                // Create an anchor tag wrapping the whole card
-                const linkWrapper = document.createElement('a');
-                linkWrapper.href = link;
-                linkWrapper.target = '_blank';  // Opens in a new tab
-                linkWrapper.style.textDecoration = 'none'; // Removes underline from link text
-
                 // Create the listing card div
                 const card = document.createElement('div');
                 card.classList.add('listing-card');
+                card.style.cursor = 'pointer'; // Make it look clickable
+
+                // Add event listener to redirect to the link when the card is clicked
+                card.addEventListener('click', () => {
+                    window.open(link, '_blank'); // Opens the link in a new tab
+                });
 
                 // Create title element
                 const titleDiv = document.createElement('div');
@@ -95,11 +95,8 @@ async function loadIphoneListings() {
                 card.appendChild(leftInfoDiv);
                 card.appendChild(rightInfoDiv);
 
-                // Wrap the entire card in the link wrapper
-                linkWrapper.appendChild(card);
-
-                // Append the link-wrapped card to the listings container
-                listingsContainer.appendChild(linkWrapper);
+                // Append the card to the listings container
+                listingsContainer.appendChild(card);
                 console.log(`Added listing for ${title}`);
             }
         }
