@@ -34,54 +34,20 @@ def is_single_phone_listing(title):
     return not any(indicator.lower() in title.lower() for indicator in multiples_indicators)
 
 
-# Function to scrape data from the website and return listings
-def scrape_data(url):
-    items = []
-    page = 1
-    while True:
-        page_url = f"{url}&page={page}"
-        response = requests.get(page_url)
-        if response.status_code != 200:
-            break
-        soup = BeautifulSoup(response.content, 'html.parser')
-        listings = soup.find_all('article', class_='relative')
-        if not listings:
-            break
 
-        for item in listings:
-            title = item.find('h2', class_='h4').text.strip() if item.find('h2', class_='h4') else 'No title'
-            if is_desired_iphone(title) and is_single_phone_listing(title):
-                price_tag = item.find('div', class_='absolute bottom-0')
-                price = price_tag.text.strip() if price_tag else 'No price'
-                link_tag = item.find('a', class_='sf-search-ad-link')
-                link = f"{link_tag['href']}" if link_tag else 'No link'
 
-                cleaned_price = clean_price(price)
+# Function to extract iPhone model from the title
+def extract_model(title):
+    # List of valid iPhone models (add more as needed)
+    valid_models = ['iPhone 11', 'iPhone 12', 'iPhone 13', 'iPhone 14', 'iPhone 15']
 
-                # Ensure category and storage are always present, even if they are unknown
-                category = categorize_model(title) if categorize_model(title) else 'Unknown'
-                storage = extract_storage_size(title) if extract_storage_size(title) else 'Unknown'
+    for model in valid_models:
+        if model in title:
+            return model
+    return 'Unknown'  # If no valid model is found
 
-                items.append({
-                    'title': title,
-                    'price': cleaned_price,
-                    'link': link,
-                    'category': category,
-                    'storage': storage
-                })
-        print(f"Scraped page {page}")
-        
-        next_button = soup.find('a', {'aria-label': 'Neste resultatside'})  # The 'aria-label' is often used for next buttons
-        if not next_button:
-            # No more pages, exit the loop
-            print("No more pages found.")
-            break
-        else:
-            # Increment the page number and continue scraping
-            page += 1
-        time.sleep(2)  # Be polite and wait before fetching the next page
 
-    return items
+
 
 
 # Function to clean and convert price string to integer
@@ -120,14 +86,66 @@ def extract_storage_size(title):
     return 'Unknown'
 
 
-def calculate_and_merge_statistics(items, output_file='iphone.csv'):
+
+# Function to scrape data from the website and return listings
+def scrape_data(url):
+    items = []
+    page = 1
+    while True:
+        page_url = f"{url}&page={page}"
+        response = requests.get(page_url)
+        if response.status_code != 200:
+            break
+        soup = BeautifulSoup(response.content, 'html.parser')
+        listings = soup.find_all('article', class_='relative')
+        if not listings:
+            break
+
+        for item in listings:
+            title = item.find('h2', class_='h4').text.strip() if item.find('h2', class_='h4') else 'No title'
+            if is_desired_iphone(title):
+                price_tag = item.find('div', class_='absolute bottom-0')
+                price = price_tag.text.strip() if price_tag else 'No price'
+                link_tag = item.find('a', class_='sf-search-ad-link')
+                link = f"{link_tag['href']}" if link_tag else 'No link'
+
+                cleaned_price = clean_price(price)
+                model = extract_model(title)  # Extract iPhone model
+
+                # Ensure category and storage are always present
+                category = categorize_model(title) if categorize_model(title) else 'Unknown'
+                storage = extract_storage_size(title) if extract_storage_size(title) else 'Unknown'
+
+                items.append({
+                    'title': title,
+                    'price': cleaned_price,
+                    'link': link,
+                    'model': model,  # Include model in the data
+                    'category': category,
+                    'storage': storage
+                })
+        print(f"Scraped page {page}")
+
+        next_button = soup.find('a', {'aria-label': 'Neste resultatside'})  # The 'aria-label' is often used for next buttons
+        if not next_button:
+            # No more pages, exit the loop
+            print("No more pages found.")
+            break
+        else:
+            # Increment the page number and continue scraping
+            page += 1
+        #time.sleep(2)  # Be polite and wait before fetching the next page
+
+    return items
+
+# Function to calculate statistics and merge them with individual listings
+def calculate_and_merge_statistics(items, output_file='iphone_combined.csv'):
     # Dictionary to store prices for each (model, category, storage)
     price_data = {}
 
     # Collect price data based on model, category, and storage
     for item in items:
-        # Ensure the key exists, even if category or storage is 'Unknown'
-        key = (item['title'].split()[1], item.get('category', 'Unknown'), item.get('storage', 'Unknown'))
+        key = (item['model'], item.get('category', 'Unknown'), item.get('storage', 'Unknown'))  # Use model as key
         if key not in price_data:
             price_data[key] = []
         if item['price'] is not None:
@@ -149,7 +167,7 @@ def calculate_and_merge_statistics(items, output_file='iphone.csv'):
     # Merge the statistics back into the original items list
     merged_items = []
     for item in items:
-        key = (item['title'].split()[1], item.get('category', 'Unknown'), item.get('storage', 'Unknown'))  # Same key format
+        key = (item['model'], item.get('category', 'Unknown'), item.get('storage', 'Unknown'))  # Same key format
         if key in stats:
             item['average_price'] = stats[key]['average_price']
             item['median_price'] = stats[key]['median_price']
@@ -158,13 +176,15 @@ def calculate_and_merge_statistics(items, output_file='iphone.csv'):
             item['median_price'] = 'N/A'
         merged_items.append(item)
 
-    # Write the merged data to a CSV file
+    # Write the merged data to a CSV file with the new 'model' column
     with open(output_file, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=['title', 'price', 'link', 'category', 'storage', 'average_price', 'median_price'])
+        writer = csv.DictWriter(file, fieldnames=['title', 'price', 'link', 'model', 'category', 'storage', 'average_price', 'median_price'])
         writer.writeheader()
         writer.writerows(merged_items)
 
     print(f"Combined data saved to '{output_file}'.")
+
+
 
 if __name__ == '__main__':
     # Scrape data from Finn.no
