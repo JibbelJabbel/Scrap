@@ -2,7 +2,7 @@
 async function loadIphoneListings() {
     try {
         // Fetch the combined iPhone listings CSV
-        const response = await fetch('iphone_combined.csv');
+        const response = await fetch('iphone.csv');
         if (!response.ok) {
             throw new Error(`Failed to load listings CSV: ${response.statusText}`);
         }
