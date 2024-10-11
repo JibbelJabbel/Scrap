@@ -139,7 +139,7 @@ def scrape_data(url):
     return items
 
 # Function to calculate statistics and merge them with individual listings
-def calculate_and_merge_statistics(items, output_file='iphone_combined.csv'):
+def calculate_and_merge_statistics(items, output_file='iphone.csv'):
     # Dictionary to store prices for each (model, category, storage)
     price_data = {}
 
