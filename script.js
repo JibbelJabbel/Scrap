@@ -56,26 +56,38 @@ async function loadIphoneListings() {
                 titleDiv.classList.add('title');
                 titleDiv.textContent = title;
 
-                // Create price element
+                // Create left-info and right-info divs
+                const leftInfoDiv = document.createElement('div');
+                leftInfoDiv.classList.add('left-info');
+                
+                const rightInfoDiv = document.createElement('div');
+                rightInfoDiv.classList.add('right-info');
+
+                // Left info: model, category, storage
+                const modelDiv = createDetailElement("Model", model);
+                const categoryDiv = createDetailElement("Category", category);
+                const storageDiv = createDetailElement("Storage", storage);
+
+                leftInfoDiv.appendChild(modelDiv);
+                leftInfoDiv.appendChild(categoryDiv);
+                leftInfoDiv.appendChild(storageDiv);
+
+                // Right info: price, avg price, median price
                 const priceDiv = document.createElement('div');
                 priceDiv.classList.add('price', priceClass);
                 priceDiv.textContent = price;
 
-                // Create model, category, storage, avg price, and median price elements
-                const modelDiv = createDetailElement("Model", model);
-                const categoryDiv = createDetailElement("Category", category);
-                const storageDiv = createDetailElement("Storage", storage);
                 const avgPriceDiv = createDetailElement("AVG price", avgPrice);
                 const medPriceDiv = createDetailElement("Med price", medPrice);
 
-                // Append all elements to the card
+                rightInfoDiv.appendChild(priceDiv);
+                rightInfoDiv.appendChild(avgPriceDiv);
+                rightInfoDiv.appendChild(medPriceDiv);
+
+                // Append title, left-info, and right-info to the card
                 card.appendChild(titleDiv);
-                card.appendChild(priceDiv);
-                card.appendChild(modelDiv);
-                card.appendChild(categoryDiv);
-                card.appendChild(storageDiv);
-                card.appendChild(avgPriceDiv);
-                card.appendChild(medPriceDiv);
+                card.appendChild(leftInfoDiv);
+                card.appendChild(rightInfoDiv);
 
                 // Append the card to the listings container
                 listingsContainer.appendChild(card);
