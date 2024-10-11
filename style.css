@@ -1,3 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
 #iphone-listings {
     display: flex;
     flex-direction: column;
@@ -7,8 +15,7 @@
 
 .listing-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 2fr 1fr; /* Two columns, wider left (2fr) and narrower right (1fr) */
     gap: 10px;
     border: 2px solid #004d66;
     padding: 10px;
@@ -17,12 +24,25 @@
 }
 
 .listing-card .title {
-    grid-column: span 2;
+    grid-column: span 2; /* Spans across both columns */
     background-color: #004d66;
     color: white;
     text-align: center;
     padding: 10px;
     font-weight: bold;
+}
+
+.listing-card .left-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listing-card .right-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
 }
 
 .listing-card .price {
@@ -31,7 +51,6 @@
     font-weight: bold;
     text-align: center;
     padding: 20px;
-    grid-row: span 2;
     border-radius: 8px;
 }
 
