@@ -2,7 +2,7 @@
 async function loadIphoneListings() {
     try {
         // Fetch the combined iPhone listings CSV
-        const response = await fetch('iphone.csv');
+        const response = await fetch('iphone_combined.csv');
         if (!response.ok) {
             throw new Error(`Failed to load listings CSV: ${response.statusText}`);
         }
@@ -23,9 +23,15 @@ async function loadIphoneListings() {
             if (columns.length === headers.length) {
                 // Extract data from the row
                 const [title, price, link, model, category, storage, avgPrice, medPrice] = columns;
+                
                 const numericPrice = parseInt(price.replace(/\D/g, ''));  // Extract numeric price
                 const avg = parseInt(avgPrice);
                 const med = parseInt(medPrice);
+
+                // Check if average or median are valid numbers
+                if (isNaN(avg) || isNaN(med)) {
+                    continue;  // Skip this listing if no valid average/median found
+                }
 
                 // Determine the color of the price box
                 let priceClass = '';
