@@ -30,7 +30,7 @@ def is_desired_iphone(title):
 
 def is_single_phone_listing(title):
     # Common indicators of multiple phones
-    multiples_indicators = [ ',', '/', 'kjøper', 'kjøpe', 'ønsker', 'ønskes', 'se', 'mini']
+    multiples_indicators = [ ',', '/', 'kjøper', 'kjøpe', 'ønsker', 'ønskes', 'se', 'mini', 'deksel']
     return not any(indicator.lower() in title.lower() for indicator in multiples_indicators)
 
 
