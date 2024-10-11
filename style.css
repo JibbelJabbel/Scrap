@@ -15,7 +15,7 @@ h1 {
 
 .listing-card {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Two columns, wider left (2fr) and narrower right (1fr) */
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
     gap: 10px;
     border: 2px solid #004d66;
     padding: 10px;
@@ -36,18 +36,17 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: space-around;
 }
 
 .listing-card .right-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     gap: 10px;
+    justify-content: space-around;
 }
 
 .listing-card .price {
-    background-color: #004d66;
-    color: white;
     font-weight: bold;
     text-align: center;
     padding: 20px;
