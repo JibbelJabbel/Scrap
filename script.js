@@ -2,16 +2,18 @@
 async function loadIphoneListings() {
     try {
         // Fetch the combined iPhone listings CSV
-        const response = await fetch('iphone.csv');
+        const response = await fetch('iphone_combined.csv');
         if (!response.ok) {
             throw new Error(`Failed to load listings CSV: ${response.statusText}`);
         }
         const data = await response.text();
+        console.log("CSV data fetched successfully");
 
         const listingsContainer = document.getElementById("iphone-listings");
 
         // Parse the CSV data into rows
         const rows = data.split('\n');
+        console.log("Parsed rows:", rows);
 
         // Extract the headers
         const headers = rows[0].split(',');
@@ -23,6 +25,7 @@ async function loadIphoneListings() {
             if (columns.length === headers.length) {
                 // Extract data from the row
                 const [title, price, link, model, category, storage, avgPrice, medPrice] = columns;
+                console.log("Processing row:", columns);
                 
                 const numericPrice = parseInt(price.replace(/\D/g, ''));  // Extract numeric price
                 const avg = parseInt(avgPrice);
@@ -30,6 +33,7 @@ async function loadIphoneListings() {
 
                 // Check if average or median are valid numbers
                 if (isNaN(avg) || isNaN(med)) {
+                    console.log(`Skipping row due to invalid avg or med price for ${title}`);
                     continue;  // Skip this listing if no valid average/median found
                 }
 
@@ -75,10 +79,11 @@ async function loadIphoneListings() {
 
                 // Append the card to the listings container
                 listingsContainer.appendChild(card);
+                console.log(`Added listing for ${title}`);
             }
         }
     } catch (error) {
-        console.error(error);
+        console.error("Error:", error);
     }
 }
 
