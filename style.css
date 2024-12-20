@@ -73,3 +73,22 @@ h1 {
 .price.red {
     background-color: #ff6666;
 }
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #004d66;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
