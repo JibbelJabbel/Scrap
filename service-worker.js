@@ -4,13 +4,16 @@ self.addEventListener('install', event => {
             return cache.addAll([
                 '/',
                 'index.html',
-                'manifest.json',
-                'styles.css',
+                'listing.html',
+                'statistics.html',
+                'statistics.js',
+                'style.css',
                 'script.js'
             ]);
         })
     );
 });
+
 
 self.addEventListener('fetch', event => {
     event.respondWith(
