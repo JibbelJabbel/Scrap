@@ -6,17 +6,20 @@ async function loadStatistics() {
         const data = await response.text();
         const rows = data.split('\n').slice(1); // Exclude header row
 
-        // Group data by series (e.g., iPhone 11, iPhone 12, etc.) with categories and storage
+        // Group data by series and subcategories (e.g., iPhone 11 Pro 64GB)
         const seriesStats = {};
         rows.forEach(row => {
-            const [title, priceStr, link, model, category, storage] = row.split(',');
+            const [title, priceStr, , model, category, storage] = row.split(',');
             const price = parseInt(priceStr?.replace(/\D/g, ''));
             
             if (!isNaN(price) && model) {
                 const series = model.match(/iPhone \d+/i)?.[0]; // Extract series like "iPhone 11"
+                const subcategory = `${category} ${storage}`; // Combine category and storage
+                
                 if (series) {
-                    if (!seriesStats[series]) seriesStats[series] = [];
-                    seriesStats[series].push({ price, title, category, storage, link });
+                    if (!seriesStats[series]) seriesStats[series] = {};
+                    if (!seriesStats[series][subcategory]) seriesStats[series][subcategory] = [];
+                    seriesStats[series][subcategory].push(price);
                 }
             }
         });
@@ -33,39 +36,32 @@ async function loadStatistics() {
         statsContainer.innerHTML = ''; // Clear existing content
 
         sortedSeries.forEach(series => {
-            const listings = seriesStats[series];
-            const prices = listings.map(item => item.price);
-            
-            if (prices.length === 0) return;
-
-            const avgPrice = (prices.reduce((sum, price) => sum + price, 0) / prices.length).toFixed(2);
-            const sortedPrices = prices.slice().sort((a, b) => a - b);
-            const medianPrice = sortedPrices.length % 2 === 0
-                ? ((sortedPrices[sortedPrices.length / 2 - 1] + sortedPrices[sortedPrices.length / 2]) / 2).toFixed(2)
-                : sortedPrices[Math.floor(sortedPrices.length / 2)];
-
-            // Create a box for each series
+            const subcategories = seriesStats[series];
             const box = document.createElement('div');
             box.classList.add('series-box');
-            box.innerHTML = `
-                <h2>${series}</h2>
-                <p><strong>Average Price:</strong> ${avgPrice}</p>
-                <p><strong>Median Price:</strong> ${medianPrice}</p>
-            `;
+            
+            // Add the series header
+            box.innerHTML = `<h2>${series}</h2>`;
 
-            // Add a list of categories and storage options
-            const details = document.createElement('ul');
-            details.classList.add('details-list');
-            listings.forEach(item => {
-                const detailItem = document.createElement('li');
-                detailItem.innerHTML = `
-                    <strong>${item.category}</strong>, ${item.storage} - 
-                    <a href="${item.link}" target="_blank">View</a>
+            // Add statistics for each subcategory
+            Object.keys(subcategories).forEach(subcategory => {
+                const prices = subcategories[subcategory];
+                if (prices.length === 0) return;
+
+                const avgPrice = (prices.reduce((sum, price) => sum + price, 0) / prices.length).toFixed(2);
+                const sortedPrices = prices.slice().sort((a, b) => a - b);
+                const medianPrice = sortedPrices.length % 2 === 0
+                    ? ((sortedPrices[sortedPrices.length / 2 - 1] + sortedPrices[sortedPrices.length / 2]) / 2).toFixed(2)
+                    : sortedPrices[Math.floor(sortedPrices.length / 2)];
+                
+                const stats = document.createElement('p');
+                stats.innerHTML = `
+                    <strong>${subcategory}:</strong> 
+                    Average Price: ${avgPrice}, Median Price: ${medianPrice}
                 `;
-                details.appendChild(detailItem);
+                box.appendChild(stats);
             });
 
-            box.appendChild(details);
             statsContainer.appendChild(box);
         });
     } catch (error) {
