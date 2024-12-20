@@ -92,3 +92,29 @@ ul li a {
     font-size: 1.2em;
 }
 
+/* General styles for series boxes */
+.series-box {
+    border: 2px solid #004d66;
+    background-color: #f1f8f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headers inside series boxes */
+.series-box h2 {
+    font-size: 1.8rem;
+    color: #004d66;
+    margin-bottom: 10px;
+}
+
+/* Paragraphs inside series boxes */
+.series-box p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 5px 0;
+}
+
+
