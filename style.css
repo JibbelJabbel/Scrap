@@ -91,7 +91,6 @@ ul li a {
     font-weight: bold;
     font-size: 1.2em;
 }
-
 /* General styles for series boxes */
 .series-box {
     border: 2px solid #004d66;
@@ -107,30 +106,16 @@ ul li a {
 .series-box h2 {
     font-size: 1.8rem;
     color: #004d66;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-/* Paragraphs inside series boxes */
+/* Paragraphs for subcategory statistics */
 .series-box p {
     font-size: 1.2rem;
     color: #333;
     margin: 5px 0;
-}
-
-/* List of details */
-.details-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
     text-align: left;
 }
 
-.details-list li {
-    font-size: 1rem;
-    margin: 5px 0;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
 }
 
