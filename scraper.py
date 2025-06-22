@@ -104,7 +104,7 @@ def scrape_data(url):
         for item in listings:
             title = item.find('h2', class_='h4').text.strip() if item.find('h2', class_='h4') else 'No title'
             if is_desired_iphone(title):
-                price_tag = item.find('div', class_='absolute bottom-0')
+                price_tag = item.find('div', class_='flex justify-between sm:mt-8 text-m space-x-12 font-bold whitespace-nowrap')
                 price = price_tag.text.strip() if price_tag else 'No price'
                 link_tag = item.find('a', class_='sf-search-ad-link')
                 link = f"{link_tag['href']}" if link_tag else 'No link'
