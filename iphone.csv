@@ -15,7 +15,7 @@ iPhone 12 Pro,2400,https://www.finn.no/recommerce/forsale/item/422320387,iPhone 
 iPhone 12mini - 64GB,2000,https://www.finn.no/recommerce/forsale/item/422358016,iPhone 12,Regular,64GB,1495.00,1495.00
 iPhone 11 64GB | Pent brukt,2490,https://www.finn.no/bap/webstore/ad.html?finnkode=345092208,iPhone 11,Regular,64GB,1695.00,1695.00
 iPhone 12 mini,2500,https://www.finn.no/recommerce/forsale/item/422321228,iPhone 12,Regular,Unknown,2250.00,2300.00
-iPhone 11 Pro. 64 GB,3200,https://www.finn.no/recommerce/forsale/item/421465522,iPhone 11,Pro,64GB,3200.00,3200.00
+iPhone 13,3000,https://www.finn.no/recommerce/forsale/item/387872997,iPhone 13,Regular,Unknown,3000.00,3000.00
 iPhone 15 pro 128GB,6500,https://www.finn.no/recommerce/forsale/item/422218998,iPhone 15,Pro,128GB,6500.00,6500.00
 iPhone 14 pro max 128 gb deep purple,6500,https://www.finn.no/recommerce/forsale/item/422222128,iPhone 14,Pro Max,128GB,6450.00,6500.00
 Strøken iPhone 13 pro max,6500,https://www.finn.no/recommerce/forsale/item/422181614,iPhone 13,Pro Max,Unknown,6500.00,6500.00
@@ -26,7 +26,6 @@ Helt ny iPhone 12 Pro 256 gb,6500,https://www.finn.no/recommerce/forsale/item/42
 "iPhone 13 Pro Max 256 GB – Pent brukt, topp tilstand",6500,https://www.finn.no/recommerce/forsale/item/421430359,iPhone 13,Pro Max,256GB,6400.00,6400.00
 iPhone 14 Pro 256 GB,6500,https://www.finn.no/recommerce/forsale/item/421403468,iPhone 14,Pro,256GB,6500.00,6500.00
 iPhone 14 Pro,6500,https://www.finn.no/recommerce/forsale/item/421148555,iPhone 14,Pro,Unknown,6471.43,6500.00
-iPhone 14 Pro Max 256 GB – Stellar svart – pent brukt,6500,https://www.finn.no/recommerce/forsale/item/421144263,iPhone 14,Pro Max,256GB,6500.00,6500.00
 iPhone 14 Pro,6500,https://www.finn.no/recommerce/forsale/item/420898447,iPhone 14,Pro,Unknown,6471.43,6500.00
 iPhone 14 Pro Max – 128 GB – Stellargrå – Hurtiglader m/ 3m kabel,6500,https://www.finn.no/recommerce/forsale/item/420823430,iPhone 14,Pro Max,128GB,6450.00,6500.00
 iPhone 14 pro!,6500,https://www.finn.no/recommerce/forsale/item/380114941,iPhone 14,Pro,Unknown,6471.43,6500.00
@@ -44,12 +43,13 @@ iPhone 12 512 GB - Pent brukt - Apple Lightning Connector,6500,https://www.finn.
 iPhone 14 Pro 128 GB mørkelilla,6500,https://www.finn.no/recommerce/forsale/item/415760702,iPhone 14,Pro,128GB,6500.00,6500.00
 iPhone 14 pro lilla STRØKEN,6500,https://www.finn.no/recommerce/forsale/item/414694323,iPhone 14,Pro,Unknown,6471.43,6500.00
 iPhone 14 Pro Max,6499,https://www.finn.no/recommerce/forsale/item/421461152,iPhone 14,Pro Max,Unknown,6499.80,6500.00
-iPhone 15 plus,6499,https://www.finn.no/recommerce/forsale/item/419063515,iPhone 15,Regular,Unknown,6499.00,6499.00
+iPhone 15 plus,6499,https://www.finn.no/recommerce/forsale/item/419063515,iPhone 15,Regular,Unknown,6399.50,6399.50
 iPhone 15 | 128GB | Sort |🔋 92%,6490,https://www.finn.no/recommerce/forsale/item/416513236,iPhone 15,Regular,128GB,6495.00,6495.00
 iPhone 14 Pro – med ladekabell,6300,https://www.finn.no/recommerce/forsale/item/421564805,iPhone 14,Pro,Unknown,6471.43,6500.00
 iPhone 14 Pro Max 128gb (Lilla) selges billig!,6300,https://www.finn.no/recommerce/forsale/item/310830977,iPhone 14,Pro Max,128GB,6450.00,6500.00
 iPhone 13 Pro Max 256GB Sierra Blå,6300,https://www.finn.no/recommerce/forsale/item/417492913,iPhone 13,Pro Max,256GB,6400.00,6400.00
-iPhone 16 Pro Max 256gb,12600,https://www.finn.no/recommerce/forsale/item/422210195,Unknown,Pro Max,256GB,14557.80,14999.00
+iPhone 15,6300,https://www.finn.no/recommerce/forsale/item/411197680,iPhone 15,Regular,Unknown,6399.50,6399.50
+iPhone 16 Pro Sort Titan 256 GB (kjøpt i November) MED GARANTI,11799,https://www.finn.no/recommerce/forsale/item/421137509,Unknown,Pro,256GB,13399.50,13399.50
 iPhone 16 Pro Max 1TB Natural Titanium,22000,https://www.finn.no/recommerce/forsale/item/420579962,Unknown,Pro Max,Unknown,16319.90,16000.00
 iPhone 16 plus 256GB med Apple Watch Ultra 2 svart,21500,https://www.finn.no/recommerce/forsale/item/420809617,Unknown,Regular,256GB,21500.00,21500.00
 Ny iPhone 16 pro Max 512GB,18000,https://www.finn.no/recommerce/forsale/item/422434085,Unknown,Pro Max,512GB,16550.00,16500.00
@@ -60,16 +60,16 @@ iPhone 16 pro Max (1TB),16500,https://www.finn.no/recommerce/forsale/item/420623
 iPhone 16 pro Max,16000,https://www.finn.no/recommerce/forsale/item/412991478,Unknown,Pro Max,Unknown,16319.90,16000.00
 iPhone 16 pro Max,16000,https://www.finn.no/recommerce/forsale/item/418128071,Unknown,Pro Max,Unknown,16319.90,16000.00
 iPhone 16 pro Max,16000,https://www.finn.no/recommerce/forsale/item/413439069,Unknown,Pro Max,Unknown,16319.90,16000.00
-Selger NY iPhone 16 Pro Max - Natural Titanium - 256 GB - fra USA (e-sim),15990,https://www.finn.no/recommerce/forsale/item/416213217,Unknown,Pro Max,256GB,14557.80,14999.00
+Selger NY iPhone 16 Pro Max - Natural Titanium - 256 GB - fra USA (e-sim),15990,https://www.finn.no/recommerce/forsale/item/416213217,Unknown,Pro Max,256GB,15047.25,14999.50
 iPhone 16 pro Max,15700,https://www.finn.no/recommerce/forsale/item/419198066,Unknown,Pro Max,Unknown,16319.90,16000.00
 iPhone 16 Pro Max 512 GB selges,15500,https://www.finn.no/recommerce/forsale/item/421798539,Unknown,Pro Max,512GB,16550.00,16500.00
 iPhone 16 Pro Max 512GB,15500,https://www.finn.no/recommerce/forsale/item/385506391,Unknown,Pro Max,512GB,16550.00,16500.00
 iPhone 16 Pro Max 512GB (sort titan),15300,https://www.finn.no/recommerce/forsale/item/419781488,Unknown,Pro Max,512GB,16550.00,16500.00
-iPhone 16 Pro Max 5G smarttelefon 256GB,15000,https://www.finn.no/recommerce/forsale/item/422393454,Unknown,Pro Max,256GB,14557.80,14999.00
-iPhone 16 Pro / 256gb / Som ny,15000,https://www.finn.no/recommerce/forsale/item/421796061,Unknown,Pro,256GB,15000.00,15000.00
+iPhone 16 Pro Max 5G smarttelefon 256GB,15000,https://www.finn.no/recommerce/forsale/item/422393454,Unknown,Pro Max,256GB,15047.25,14999.50
+iPhone 16 Pro / 256gb / Som ny,15000,https://www.finn.no/recommerce/forsale/item/421796061,Unknown,Pro,256GB,13399.50,13399.50
 iPhone 16 pro Max,15000,https://www.finn.no/recommerce/forsale/item/418806748,Unknown,Pro Max,Unknown,16319.90,16000.00
-"iPhone 16 Pro Max 256 GB – Naturlig Titan (Som ny, 100 % batteri)",14999,https://www.finn.no/recommerce/forsale/item/420616751,Unknown,Pro Max,256GB,14557.80,14999.00
+"iPhone 16 Pro Max 256 GB – Naturlig Titan (Som ny, 100 % batteri)",14999,https://www.finn.no/recommerce/forsale/item/420616751,Unknown,Pro Max,256GB,15047.25,14999.50
 "iPhone 16 pro max, Uåpnet/Ubrukt.",14999,https://www.finn.no/recommerce/forsale/item/420259275,Unknown,Pro Max,Unknown,16319.90,16000.00
 "Apple iPhone 15 Pro Max 256 GB, Ny, forseglet",14800,https://www.finn.no/recommerce/forsale/item/421669790,iPhone 15,Pro Max,256GB,14800.00,14800.00
-iPhone 16 pro Max 256 GB,14200,https://www.finn.no/recommerce/forsale/item/419572927,Unknown,Pro Max,256GB,14557.80,14999.00
+iPhone 16 pro Max 256 GB,14200,https://www.finn.no/recommerce/forsale/item/419572927,Unknown,Pro Max,256GB,15047.25,14999.50
 iPhone 16 Pro Max,14000,https://www.finn.no/recommerce/forsale/item/422275945,Unknown,Pro Max,Unknown,16319.90,16000.00
