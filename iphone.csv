@@ -1,13 +1,13 @@
 title,price,link,model,category,storage,average_price,median_price
 Apple iPhone 11 Mobiltelefon 256 GB Svart,500,https://www.finn.no/recommerce/forsale/item/438036300,iPhone 11,Regular,256GB,500.00,500.00
 iPhone 11 Pro,1500,https://www.finn.no/recommerce/forsale/item/438060346,iPhone 11,Pro,Unknown,1300.00,1300.00
-Apple iPhone 11 Pro Mobiltelefon 64 GB,2499,https://www.finn.no/recommerce/forsale/item/438034317,iPhone 11,Pro,64GB,1999.50,1999.50
+Apple iPhone 11 Pro Mobiltelefon 64 GB,2499,https://www.finn.no/recommerce/forsale/item/438034317,iPhone 11,Pro,64GB,2499.00,2499.00
 iPhone 12 mini,800,https://www.finn.no/recommerce/forsale/item/438029910,iPhone 12,Regular,Unknown,800.00,800.00
 Apple iPhone 12 Mobiltelefon 64 GB Svart,1700,https://www.finn.no/recommerce/forsale/item/438027476,iPhone 12,Regular,64GB,2100.00,2100.00
 Apple iPhone 12 128 GB svart mobiltelefon,1800,https://www.finn.no/recommerce/forsale/item/438021875,iPhone 12,Regular,128GB,1800.00,1800.00
+Nesten NY iPhone 11 med garanti,2490,https://www.finn.no/bap/webstore/ad.html?finnkode=338449540,iPhone 11,Regular,Unknown,2490.00,2490.00
 Apple iPhone 12 64 GB Rød Smartphone,2500,https://www.finn.no/recommerce/forsale/item/437992659,iPhone 12,Regular,64GB,2100.00,2100.00
 Apple iPhone 11 Mobiltelefon 64 GB Hvit,2000,https://www.finn.no/recommerce/forsale/item/437992335,iPhone 11,Regular,64GB,1350.00,1350.00
-Nesten NY iPhone 11 med garanti,2490,https://www.finn.no/bap/webstore/ad.html?finnkode=338449540,iPhone 11,Regular,Unknown,2490.00,2490.00
 iPhone 11 64 GB,700,https://www.finn.no/recommerce/forsale/item/437979767,iPhone 11,Regular,64GB,1350.00,1350.00
 Apple iPhone 12 Pro max 128 GB Blå,2500,https://www.finn.no/recommerce/forsale/item/437999026,iPhone 12,Pro Max,128GB,2500.00,2500.00
 iPhone 12 Pro 128GB,2400,https://www.finn.no/recommerce/forsale/item/422716397,iPhone 12,Pro,128GB,2400.00,2400.00
@@ -16,12 +16,11 @@ iPhone 12 Pro Max,2500,https://www.finn.no/recommerce/forsale/item/437983820,iPh
 iPhone 11 Pro 256G,1100,https://www.finn.no/recommerce/forsale/item/437970792,iPhone 11,Pro,Unknown,1300.00,1300.00
 Ny iPhone 12 Pro,2500,https://www.finn.no/recommerce/forsale/item/437963650,iPhone 12,Pro,Unknown,2500.00,2500.00
 iPhone 13 Pro 128 GB Gold – Kamera litt defekt – ellers perfekt!,2490,https://www.finn.no/recommerce/forsale/item/437973281,iPhone 13,Pro,128GB,2490.00,2490.00
-iPhone 13 128GB 80%,2499,https://www.finn.no/recommerce/forsale/item/437949139,iPhone 13,Regular,128GB,2499.00,2499.00
-"iPhone 11 Pro, grønn, 64gb selges",1500,https://www.finn.no/recommerce/forsale/item/438030165,iPhone 11,Pro,64GB,1999.50,1999.50
-Pen og hel Apple iPhone 12 Pro 128 GB Blå,2400,https://www.finn.no/recommerce/forsale/item/437928394,iPhone 12,Pro,128GB,2400.00,2400.00
-Apple iPhone 14 Pro Max Mobiltelefon 256 GB Svart,6000,https://www.finn.no/recommerce/forsale/item/437560143,iPhone 14,Pro Max,256GB,6333.33,6500.00
+iPhone 13 128GB 80%,2499,https://www.finn.no/recommerce/forsale/item/437949139,iPhone 13,Regular,128GB,3399.50,3399.50
+iPhone 13 128 GB Grønn,4300,https://www.finn.no/recommerce/forsale/item/410153444,iPhone 13,Regular,128GB,3399.50,3399.50
+Apple iPhone 14 Pro Max 128 GB,6500,https://www.finn.no/recommerce/forsale/item/438063515,iPhone 14,Pro Max,128GB,6500.00,6500.00
 Apple iPhone 15 Pro Mobiltelefon 128 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/438057560,iPhone 15,Pro,128GB,6500.00,6500.00
-Apple iPhone 14 Pro Max 256 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/438040671,iPhone 14,Pro Max,256GB,6333.33,6500.00
+Apple iPhone 14 Pro Max 256 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/438040671,iPhone 14,Pro Max,256GB,6500.00,6500.00
 Apple iPhone 16 Mobiltelefon 128 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/438009453,Unknown,Regular,128GB,6500.00,6500.00
 iPhone 14 Pro Max 128GB,6500,https://www.finn.no/recommerce/forsale/item/437980957,iPhone 14,Pro Max,128GB,6500.00,6500.00
 Apple iPhone 15 128 GB mobiltelefon rosa,6500,https://www.finn.no/recommerce/forsale/item/437962031,iPhone 15,Regular,128GB,6500.00,6500.00
@@ -58,17 +57,17 @@ iPhone 14 Pro Max 128 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/
 Apple iPhone 15 Pro Mobiltelefon 128 GB i Naturlig Titan,6500,https://www.finn.no/recommerce/forsale/item/436786719,iPhone 15,Pro,128GB,6500.00,6500.00
 Apple iPhone 14 Pro Max 128 GB – Space Black – Meget pen stand,6500,https://www.finn.no/recommerce/forsale/item/426714073,iPhone 14,Pro Max,128GB,6500.00,6500.00
 Apple iPhone 15 Mobiltelefon 256 GB Svart,6500,https://www.finn.no/recommerce/forsale/item/436714920,iPhone 15,Regular,256GB,6500.00,6500.00
-Apple iPhone 14 Pro Max Mobiltelefon 256 GB Sølv,6500,https://www.finn.no/recommerce/forsale/item/436687185,iPhone 14,Pro Max,256GB,6333.33,6500.00
+Apple iPhone 14 Pro Max Mobiltelefon 256 GB Sølv,6500,https://www.finn.no/recommerce/forsale/item/436687185,iPhone 14,Pro Max,256GB,6500.00,6500.00
 Apple iPhone 14 Pro Max 512 GB svart,6500,https://www.finn.no/recommerce/forsale/item/435979661,iPhone 14,Pro Max,512GB,6500.00,6500.00
 iPhone 15 Pro / 128GB / 89 % batteritilstand,6500,https://www.finn.no/recommerce/forsale/item/435404136,iPhone 15,Pro,128GB,6500.00,6500.00
 "iPhone 15 PRO , 91% batterikapasitet, 128GB",6500,https://www.finn.no/recommerce/forsale/item/436459440,iPhone 15,Pro,128GB,6500.00,6500.00
 iPhone 15 Pro 128 GB – Som NY,6500,https://www.finn.no/recommerce/forsale/item/436471009,iPhone 15,Pro,128GB,6500.00,6500.00
-iPhone 14 Pro Max,6500,https://www.finn.no/recommerce/forsale/item/436424358,iPhone 14,Pro Max,Unknown,6500.00,6500.00
+Apple iPhone 16 Pro Max 512 GB Gull,13500,https://www.finn.no/recommerce/forsale/item/433607901,Unknown,Pro Max,512GB,16899.75,17999.50
 Apple iPhone 15 Pro Max Smarttelefon 256 GB Svart,22000,https://www.finn.no/recommerce/forsale/item/428241388,iPhone 15,Pro Max,256GB,14250.00,14250.00
 TOPPMODELLEN: iPhone 16 Pro Max 1 TB – Natural Titanium,19990,https://www.finn.no/recommerce/forsale/item/429156243,Unknown,Pro Max,Unknown,18495.00,18495.00
-iPhone 16 Pro Max – 512 GB – Som ny!,18100,https://www.finn.no/recommerce/forsale/item/437129571,Unknown,Pro Max,512GB,18033.00,18000.00
-iPhone 16 Pro Max 512GB- svart titan. så godt som ny med garanti,18000,https://www.finn.no/recommerce/forsale/item/429143880,Unknown,Pro Max,512GB,18033.00,18000.00
-Apple iPhone 16 Pro Max Smarttelefon 512 GB Svart,17999,https://www.finn.no/recommerce/forsale/item/436777425,Unknown,Pro Max,512GB,18033.00,18000.00
+iPhone 16 Pro Max – 512 GB – Som ny!,18100,https://www.finn.no/recommerce/forsale/item/437129571,Unknown,Pro Max,512GB,16899.75,17999.50
+iPhone 16 Pro Max 512GB- svart titan. så godt som ny med garanti,18000,https://www.finn.no/recommerce/forsale/item/429143880,Unknown,Pro Max,512GB,16899.75,17999.50
+Apple iPhone 16 Pro Max Smarttelefon 512 GB Svart,17999,https://www.finn.no/recommerce/forsale/item/436777425,Unknown,Pro Max,512GB,16899.75,17999.50
 NY forseglet iPhone 16 pro 512 GB desert titanium uåpnet,17500,https://www.finn.no/recommerce/forsale/item/437287877,Unknown,Pro,512GB,17500.00,17500.00
 Apple iPhone 16 Pro Max 1 TB,17000,https://www.finn.no/recommerce/forsale/item/437144605,Unknown,Pro Max,Unknown,18495.00,18495.00
 iPhone 15 Pro Max 5G 1TB Hvit Titan,17000,https://www.finn.no/recommerce/forsale/item/434505477,iPhone 15,Pro Max,Unknown,17000.00,17000.00
